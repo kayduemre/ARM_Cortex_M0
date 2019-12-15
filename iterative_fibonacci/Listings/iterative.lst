@@ -1,0 +1,215 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;Allocate space from memory    
+    2 00000000 00000009 
+                       index   EQU              9           ;Declare array size
+                                                            
+    3 00000000                 AREA             NEW_ARRAY,DATA, READWRITE ;Defi
+                                                            ne this part will w
+                                                            rite in data area
+    4 00000000                 ALIGN
+    5 00000000         __Array_Start
+    6 00000000 00 00 00 
+              00 00 00 
+              00 00 00 fib_array
+                               SPACE            index       ;Allocate space fro
+                                                            m memory 
+    7 00000009         __Array_End
+    8 00000009         
+    9 00000009         
+   10 00000009         ;Our code
+   11 00000009                 AREA             test_array, code, readonly ;Def
+                                                            ine this part will 
+                                                            write as code
+   12 00000000                 ENTRY
+   13 00000000                 THUMB
+   14 00000000                 ALIGN
+   15 00000000         __main  FUNCTION
+   16 00000000                 EXPORT           __main
+   17 00000000 480E            LDR              r0, =fib_array ;Store start add
+                                                            ress of the allocat
+                                                            ed space
+   18 00000002 4D0F            LDR              r5, =__Array_End ;Store end add
+                                                            ress of the allocat
+                                                            ed space
+   19 00000004 490F            LDR              r1, =index  ;store index value
+   20 00000006 B403            PUSH             {r0, r1}    ;push starting arra
+                                                            y adres and index a
+                                                            s parameter
+   21 00000008 F000 F800       BL               fib         ;go to fib function
+                                                            s
+   22 0000000C         
+   23 0000000C         
+   24 0000000C BC03    fib     POP              {r0, r1}    ;starting array in 
+                                                            r6 and index in r7
+   25 0000000E 2201            MOVS             r2, #1      ;counter
+   26 00000010 2302            MOVS             r3, #2      ;for less than 3
+   27 00000012 428A    again   CMP              r2, r1      ;compare r2 < r7,ye
+                                                            s enter loop, no go
+                                                             to stop
+   28 00000014 DA10            BGE              stop        ;go to stop subrutu
+                                                            ne
+   29 00000016 4293            CMP              r3, r2      ;compare r2 < r3
+   30 00000018 DA09            BGE              store1      ;in index 1 and 2, 
+                                                            store 1, go to stor
+                                                            e1 subrutine
+   31 0000001A 1E52            SUBS             r2, r2,#1   ;r2=r2-1
+   32 0000001C 5C86            LDRB             r6, [r0, r2] ;temp r6 = fib_arr
+                                                            ay[r2 -1]
+   33 0000001E 1E52            SUBS             r2, r2,#1   ;r2=r2-1
+   34 00000020 5C87            LDRB             r7, [r0, r2] ;temp r7 = fib_arr
+                                                            ay[r2 -2]
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   35 00000022 19F6            ADDS             r6,r6,r7    ;r6 = r6 +r7
+   36 00000024 1C92            ADDS             r2,r2,#2    ;r2=r2+2
+   37 00000026 5486            STRB             r6, [r0, r2]
+   38 00000028 1C52            ADDS             r2, r2, #1  ;increment r2 count
+                                                            er
+   39 0000002A F7FF FFF2       BL               again       ;go to again subrut
+                                                            ine 
+   40 0000002E         ;STRB r1, [r0]        ;Store this value to allocated spa
+                       ce
+   41 0000002E         
+   42 0000002E 2401    store1  MOVS             r4, #1      ;store 1 in r2 inde
+                                                            x
+   43 00000030 5484            STRB             r4, [r0, r2] ;store 1 to alloca
+                                                            ted space
+   44 00000032 1C52            ADDS             r2, r2, #1  ;increment r2 1
+   45 00000034 F7FF FFED       BL               again       ;go to again subrut
+                                                            ine 
+   46 00000038         
+   47 00000038 E7FE    stop    B                stop        ;Infinite loop
+   48 0000003A                 ENDFUNC
+   49 0000003A                 END
+              00 00 00000000 
+              00000000 
+              00000009 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
+ork --depend=.\objects\iterative.d -o.\objects\iterative.o -I.\RTE\_Target_1 -I
+C:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include -IC:\
+Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\Device\ARM\ARMCM0\Include -
+-predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 528" --predefine
+="_RTE_ SETA 1" --predefine="ARMCM0 SETA 1" --list=.\listings\iterative.lst ite
+rative.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+NEW_ARRAY 00000000
+
+Symbol: NEW_ARRAY
+   Definitions
+      At line 3 in file iterative.s
+   Uses
+      None
+Comment: NEW_ARRAY unused
+__Array_End 00000009
+
+Symbol: __Array_End
+   Definitions
+      At line 7 in file iterative.s
+   Uses
+      At line 18 in file iterative.s
+Comment: __Array_End used once
+__Array_Start 00000000
+
+Symbol: __Array_Start
+   Definitions
+      At line 5 in file iterative.s
+   Uses
+      None
+Comment: __Array_Start unused
+fib_array 00000000
+
+Symbol: fib_array
+   Definitions
+      At line 6 in file iterative.s
+   Uses
+      At line 17 in file iterative.s
+Comment: fib_array used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 15 in file iterative.s
+   Uses
+      At line 16 in file iterative.s
+Comment: __main used once
+again 00000012
+
+Symbol: again
+   Definitions
+      At line 27 in file iterative.s
+   Uses
+      At line 39 in file iterative.s
+      At line 45 in file iterative.s
+
+fib 0000000C
+
+Symbol: fib
+   Definitions
+      At line 24 in file iterative.s
+   Uses
+      At line 21 in file iterative.s
+Comment: fib used once
+stop 00000038
+
+Symbol: stop
+   Definitions
+      At line 47 in file iterative.s
+   Uses
+      At line 28 in file iterative.s
+      At line 47 in file iterative.s
+
+store1 0000002E
+
+Symbol: store1
+   Definitions
+      At line 42 in file iterative.s
+   Uses
+      At line 30 in file iterative.s
+Comment: store1 used once
+test_array 00000000
+
+Symbol: test_array
+   Definitions
+      At line 11 in file iterative.s
+   Uses
+      None
+Comment: test_array unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+index 00000009
+
+Symbol: index
+   Definitions
+      At line 2 in file iterative.s
+   Uses
+      At line 6 in file iterative.s
+      At line 19 in file iterative.s
+
+1 symbol
+347 symbols in table

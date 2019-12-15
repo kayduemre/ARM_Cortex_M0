@@ -1,0 +1,11 @@
+Dependencies for Project 'iterative', Target 'Target 1': (DO NOT MODIFY !)
+F (.\iterative.s)(0x5DAB55EE)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-IC:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\Device\ARM\ARMCM0\Include--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "ARMCM0 SETA 1"--list .\listings\iterative.lst --xref -o .\objects\iterative.o --depend .\objects\iterative.d)
+F (RTE\Device\ARMCM0\startup_ARMCM0.s)(0x5C8BA64A)(--cpu Cortex-M0 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-IC:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\Device\ARM\ARMCM0\Include--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "ARMCM0 SETA 1"--list .\listings\startup_armcm0.lst --xref -o .\objects\startup_armcm0.o --depend .\objects\startup_armcm0.d)
+F (RTE\Device\ARMCM0\system_ARMCM0.c)(0x5C8A6ACE)(--c99 --gnu -c --cpu Cortex-M0 -D__EVAL --li -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IC:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\Device\ARM\ARMCM0\Include-D__UVISION_VERSION="528" -D_RTE_ -DARMCM0-o .\objects\system_armcm0.o --omf_browse .\objects\system_armcm0.crf --depend .\objects\system_armcm0.d)
+I (C:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\Device\ARM\ARMCM0\Include\ARMCM0.h)(0x5BBDB1CA)
+I (C:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\core_cm0.h)(0x5C8BA646)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEBC032)
+I (C:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_version.h)(0x5B975A94)
+I (C:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_compiler.h)(0x5C8F9424)
+I (C:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_armcc.h)(0x5C8F9424)
+I (C:\Users\emrek\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\Device\ARM\ARMCM0\Include\system_ARMCM0.h)(0x5BBDB1CA)
